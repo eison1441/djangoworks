@@ -26,7 +26,10 @@ from myapp.views import MammoottyViwe
 from myapp.views import RobertDowneyJrView
 from myapp.views import KamalHaasanView
 from myapp.views import RajinikanthView
-
+from myapp.views import FeedBackView
+from myapp.views import ReviewView
+from myapp.views import FilimReview
+from myapp.views import FacultyReview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,6 +43,10 @@ urlpatterns = [
     path("rdj/",RobertDowneyJrView.as_view()),
     path("kamal/",KamalHaasanView.as_view()),
     path("Rejini/",RajinikanthView.as_view()),
+    path("Feedback/",FeedBackView.as_view()),
+    path("Review/",ReviewView.as_view()),
+    path("Freview/",FilimReview.as_view()),
+    path("Facultyreview/",FacultyReview.as_view()),
     
 
 ]
