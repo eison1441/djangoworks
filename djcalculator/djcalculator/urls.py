@@ -24,19 +24,20 @@ from operation.views import SingUpView
 from  operation.views import AppointmentRequestFormView
 from  operation.views import BmiFormView
 from  operation.views import MilageFormView
-from  operation.views import EmiFormView,CalorieFormView
+from  operation.views import EmiFormView,CalorieFormView,IndexView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("add/",AdditionView.as_view()),
-    path("sub/",SubtractionView.as_view()),
-    path("multi/",MultiplicationView.as_view()),
-    path("vehicle/",VehichleRegistrationView.as_view()),
-    path("Signup/",SingUpView.as_view()),
-    path("application/",AppointmentRequestFormView.as_view()),
-    path("bmi/",BmiFormView.as_view()),
-    path("milage/",MilageFormView.as_view()),
-    path("emi/",EmiFormView.as_view()),
-    path("calorie/",CalorieFormView.as_view()),
+    path("add/",AdditionView.as_view(),name="add"),
+    path("sub/",SubtractionView.as_view(),name="sub"),
+    path("multi/",MultiplicationView.as_view(),name="multi"),
+    path("vehicle/",VehichleRegistrationView.as_view(),name="vehicle"),
+    path("Signup/",SingUpView.as_view(),name="signup"),
+    path("application/",AppointmentRequestFormView.as_view(),name="app"),
+    path("bmi/",BmiFormView.as_view(),name="bmi"),
+    path("milage/",MilageFormView.as_view(),name="milage"),
+    path("emi/",EmiFormView.as_view(),name="emi"),
+    path("calorie/",CalorieFormView.as_view(),name="calorie"),
+    path("",IndexView.as_view(),name="index"),
 
     
     

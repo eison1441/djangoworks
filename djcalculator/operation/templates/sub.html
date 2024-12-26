@@ -1,28 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-    <h1>Subtraction</h1>
+{%extends 'base.html'%}
+{%block main_block%}
+<form action="" method="post">
+    {%csrf_token%}
+    <div class="mb-3">
+        <label for="">First number</label>
+        <input type="number" name="num1">
+    </div>
+    <div class="mb-3">
+        <label for="">Second number</label>
+        <input type="number" name="num2">
+    </div>
+    <button type="submit">Get result</button>
+</form>
 
-    <form action="" method="post">
-        {%csrf_token%}
-        <div class="mb-3">
-            <label for="">First number</label>
-            <input type="number" name="num1">
-        </div>
-        <div class="mb-3">
-            <label for="">Second number</label>
-            <input type="number" name="num2">
-        </div>
-        <button type="submit">Get result</button>
-    </form>
+{{output}}
 
-    {{output}}
+<a href="{%url 'index'%}">Go back</a>
 
-</body>
-</html>
+{%endblock%}

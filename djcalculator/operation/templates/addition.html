@@ -1,29 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{%extends 'base.html'%}
+{%load static%}
+{%block main_block%}
+<form action="" method="post">
+    {%csrf_token%}
 
-    <form action="" method="post">
-        {%csrf_token%}
+    <h1>Addition</h1>
+    <div class="md-3">
+        <label for="">First number</label>
+        <input type="number" name="num1">
+    </div>
+    <div class="md-3">
+        <label for="">Second number</label>
+        <input type="number" name="num2">
+    </div>
+    <button type="submit">ADD</button>
 
-        <h1>Addition</h1>
-        <div class="md-3">
-            <label for="">First number</label>
-            <input type="number" name="num1">
-        </div>
-        <div class="md-3">
-            <label for="">Second number</label>
-            <input type="number" name="num2">
-        </div>
-        <button type="submit">ADD</button>
+</form>
 
-    </form>
+{{output}}
 
-    {{output}}
-    
-</body>
-</html>
+<a href="{%url 'index'%}">Go back</a>
+<img src="{%static 'images/calculator.png'%}" alt="" >
+
+{%endblock%}

@@ -240,7 +240,7 @@ class CalorieFormView(View):
 
         if form_instance.is_valid():
 
-            data=form_instance.cleaned_data\
+            data=form_instance.cleaned_data
             
 
             # print(data)
@@ -268,6 +268,12 @@ class CalorieFormView(View):
             
         
         return render(request,"calorie.html",{"form":form_instance,"result":BMR,"Calorie":Calorie})
+    
+
+class IndexView(View):
+    def get(self,request,*args,**kwargs):
+
+        return render(request,"index.html")
 
 
 

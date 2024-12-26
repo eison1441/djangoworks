@@ -60,6 +60,7 @@ class AppoinmentRequestForm(forms.Form):
 class BmiForm(forms.Form):
     height=forms.IntegerField()
     weight=forms.IntegerField()
+    email=forms.ema
 
 
 class MilageForm(forms.Form):
@@ -84,7 +85,7 @@ class CalorieForm(forms.Form):
         ("male","Male"),
         ("female","Female")
     )
-    gender=forms.ChoiceField(choices=Gender_choice  widget=)
+    gender=forms.ChoiceField(choices=Gender_choice,widget=forms.Select(attrs={"class":"form-control form-select mb-3"}))
     activity_choice=(
         (1.2,"SEDENTARY"),
         (1.375,"LIGHTLY ACTIVE"),
@@ -92,4 +93,4 @@ class CalorieForm(forms.Form):
         (1.725,"VERY ACTIVE"),
         (1.9,"EXTRA ACTIVE")
     )
-    activity_level=forms.ChoiceField(choices=activity_choice)
+    activity_level=forms.ChoiceField(choices=activity_choice,widget=forms.Select(attrs={"class":"form-control form-select mb-3"}))
