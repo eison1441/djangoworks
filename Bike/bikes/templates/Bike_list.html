@@ -1,0 +1,84 @@
+{%extends 'base.html'%}
+
+
+
+{%block main_block%}
+
+<!-- {%for b in data%}
+       
+                    
+<p>Bike Name:{{b.name}}</p>
+<p>Brand:{{b.brand}}</p>
+<p>Price:{{b.price}}</p> -->
+<!-- <a href="{%url 'Bike_details' b.id%}">View</a> -->
+<!-- <a class="btn btn-primary" href="{%url 'Bike_details' b.id%}" role="button">View</a>
+
+
+
+{%endfor%} -->
+
+
+<div class="container mt-5">
+ 
+    <form class="d-flex justify-content-center mt-3 text-center" >
+        <input class="form-control w-25 " placeholder="Search" type="text" name="search">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
+    </form>
+ 
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10">
+        <table class="table table-striped mt-2 mb-5 border border-2 shadow">
+            <tr>
+                <th>Bike name</th>
+                <th>Brand</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+            {%for b in data%}
+
+                <tr>
+                    <td>{{b.name}}</td>
+                    <td>{{b.brand}}</td>
+                    <td>{{b.price}}</td>
+                    <td>
+                        {%if b.image%}
+                            <img src="{{b.image.url}}" alt="" class="w-25" height="50px">
+                        {%endif%}
+                    </td>
+                    <td>
+                        <a class="bi bi-eye text-info" href="{%url 'Bike_details' b.id%}"></a>
+
+                        <a class="bi bi-trash3 text-danger" href="{%url 'Bike_delete' b.id%}"></a>
+
+                        <a class="bi bi-pencil-square text-warning-emphasis" href="{%url 'Bike_update' b.id%}"></a>
+                    </td>
+                </tr>
+
+
+            {%endfor%}
+            
+        </table>
+
+        </div>
+        <div class="col-1">
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-10"></div>
+        <div class="col-1">
+            <a class="bi bi-plus-square btn btn-primary" href="{%url 'Bike_add'%}"> AddBike</a>
+        </div>
+    </div>
+</div>
+
+
+   
+    
+{%endblock%}
+
+    
+    

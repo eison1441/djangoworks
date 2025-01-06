@@ -10,4 +10,6 @@ class Bike(models.Model):
     fuel_type=models.CharField(max_length=50)
     color=models.CharField(max_length=50)
     mileage=models.PositiveIntegerField()
+    image=models.ImageField(upload_to="bikeimages",default="static/images/backgroung.jpg")
+    
 

@@ -1,0 +1,49 @@
+<style>
+    body {
+           background: url('/bikes/static/images/background2.jpg') no-repeat center center fixed;
+           background-size: cover;
+           height: 100vh;
+       }
+
+       .col-6 {
+           background: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+           backdrop-filter: blur(10px); /* Blur effect */
+           -webkit-backdrop-filter: blur(10px); /* For Safari */
+       }
+
+       .shadow {
+           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+       }
+</style>
+
+{%extends 'base.html'%}
+
+{%load static%}
+
+{%block main_block%}
+
+
+<div class="container mt-5 mb-5">
+    <div class="row mt-5 mb-5">
+        <div class="col-3"></div>
+        <div class="col-6 mt-5 border border-2 p-3 mb-5  rounded-5 w-50 h-50 shadow ">
+            <h1 class="text-center mt-5 mb-5"><u>Register</u></h1>
+                <form class="mt-3 mb-3 mb-5" action="" method="post">
+                    {%csrf_token%}
+                    {{form}}
+                    <button class="btn btn-outline-primary mt-4  " type="submit"><i class="bi bi-box-arrow-in-left"></i>Register</button>
+                </form>
+
+               <p> Do you have an account go to<a href="{%url 'signin'%}">Sign in</a></p>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+
+  
+{%endblock%}
+
+
+

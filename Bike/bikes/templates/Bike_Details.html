@@ -1,0 +1,59 @@
+
+{%extends 'base.html'%}
+<!-- <p>Bike Name:{{data.name}}</p>
+                <p>Brand:{{data.brand}}</p>
+                <p>Price:{{data.price}}</p>
+                <p>Fuel Type:{{data.fuel_type}}</p>
+                <p>Color:{{data.color}}</p>
+                <p>Mileage:{{data.mileage}}</p> -->
+
+
+{%block main_block%}
+
+
+<div class="container mt-4 mb-4 form-control border w-50 shadow">
+   <div class="row mt-3 mb-3 text-left">
+        <div class="col ms-4 me-4 ">
+            <table class="table table-striped mt-5 mb-5">
+                <tr>
+                    <th>Bike Name</th>
+                    <td>{{data.name}}</td>
+                </tr>
+                <tr>
+                    <th>Brand</th>
+                    <td>{{data.brand}}</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>
+                        {{data.price}}
+                    </td>
+                </tr>
+                <tr>
+                    <th>Fuel Type</th>
+                    <td>{{data.fuel_type}}</td>
+                </tr>
+                <tr>
+                    <th>Color</th>
+                    <td>{{data.color}}</td>
+                </tr>
+                <tr>
+                    <th>Mileage</th>
+                    <td>{{data.mileage}} {{data.image.url}}</td>
+                </tr>
+                <tr>
+                    <th>Image</th>
+                    <td><img src={{data.image.url}} width="400px" height="300px"></td>
+                </tr>
+            </table>
+        </div>
+   </div>
+</div>
+
+   
+    
+{%endblock%}
+
+
+
+
