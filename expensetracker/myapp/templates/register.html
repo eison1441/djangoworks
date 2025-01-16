@@ -1,0 +1,57 @@
+<style>
+    body {
+        margin: 0;
+    padding: 0;
+    background: url('/static/images/background2.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    animation: zoomIn 5s infinite alternate ease-in-out;
+}
+
+
+    .col-6 {
+        background: rgba(255, 255, 255, 0.1); 
+        backdrop-filter: blur(10px); 
+        -webkit-backdrop-filter: blur(10px); 
+    }
+
+    .shadow {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+</style>
+
+
+{%extends 'base.html'%}
+
+{%load static%}
+
+{%block main_block%}
+
+
+<div class="container mt-4">
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6  mt-4 border border2 shadow p-3 rounded ">
+            <h1 class="text-center text-primary mt-3">Register</h1>
+            {%for m in messages%}
+                      
+                      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <strong><i class="bi bi-exclamation-triangle-fill text-danger"></i> {{m}}</strong> You should check in on some of those fields below.
+                        <a href="{%url 'signin'%}" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></a>
+                      </div>
+            {%endfor%}
+    <form action="" method="post">
+        {%csrf_token%}
+        {{form}}
+        <button class="btn btn-outline-primary mt-5 mb-2" type="submit"><i class="bi bi-box-arrow-in-left"></i>Register</button>
+    </form>
+       <p class="">Already have an account Click to <a class="text-primary" href="{%url 'signin'%}">signin</a></p>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+
+{%endblock%}

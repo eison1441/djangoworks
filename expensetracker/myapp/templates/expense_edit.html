@@ -1,0 +1,71 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+<!-- <div class="container mt-5">
+
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6 col-6  mt-5 border border2 shadow p-3 rounded  ">
+            <h1 class="text-center text-primary">Add Expense</h1>
+
+            <form action="" method="post">
+                {%csrf_token%}
+                {{form}}
+                <button class="btn btn-outline-primary mt-5 mb-2" type="submit"><i class="bi bi-plus-square"></i>  Add Expense</button>
+            </form>
+            <a href=""></a>
+        </div>
+        <div class="col-3">
+        </div>
+      
+</div> -->
+
+
+<div class="container mt-5">
+    <div class="card mb-4">
+       <div class="card-header">
+           <h5 class="card-title">Update Expense</h5>
+       </div>
+       <div class="card-body">
+           {{form.errors}}
+           <form method="post">
+               {%csrf_token%}
+               <div class="form-row">
+                   <div class="form-group col-md-4">
+                       <label for="expenseCategory">Category</label>
+                       <div class="input-group">
+                           <div class="input-group-prepend">
+                               <span class="input-group-text"><i class="bi bi-tags"></i></span>
+                           </div>
+                           {{form.category}}
+                       </div>
+                   </div>
+                   <div class="form-group col-md-4">
+                       <label for="expenseAmount">Amount</label>
+                       <div class="input-group">
+                           <div class="input-group-prepend">
+                               <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+                           </div>
+                           <input name="amount" value="{{form.instance.amount}}" type="number" class="form-control" id="expenseAmount" placeholder="Enter amount" required>
+                       </div>
+                   </div>
+                   <div class="form-group col-md-4">
+                       <label for="expenseDescription">Title</label>
+                       <div class="input-group">
+                           <div class="input-group-prepend">
+                               <span class="input-group-text"><i class="bi bi-pencil-square"></i></span>
+                           </div>
+                           <input name="title" value="{{form.instance.title}}" type="text" class="form-control" id="expenseDescription" placeholder="Enter description" required>
+                       </div>
+                   </div>
+               </div>
+               
+               <button type="submit" class="btn btn-success"><i class="bi bi-box-arrow-in-left"></i> change</button>
+           </form>
+       </div>
+   </div>
+</div>
+
+
+{%endblock%}

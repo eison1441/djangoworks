@@ -58,5 +58,5 @@ class BikeSignUpForm(forms.ModelForm):
 
 class BikeSignInForm(forms.Form):
 
-    username = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control mb-3 text-light", "style": "color: #f8f9fa;"}))
-    password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control mb-3 text-light", "style": "color: #f8f9fa;"}))
+    username = forms.CharField(widget=forms.TextInput(attrs={"class": "form-control mb-3 text-primary", "style": "color: #f8f9fa;"}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={"class": "form-control mb-3 text-primary", "style": "color: #f8f9fa;"}))

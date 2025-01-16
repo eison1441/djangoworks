@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path
-from bikes.views import BikeAddView,BikeListView,BikeDetailsView,BikeDeleteView,BikeUpdateView,BikeSignUpView,BikeSignInView
+from bikes.views import BikeAddView,BikeListView,BikeDetailsView,BikeDeleteView,BikeUpdateView,BikeSignUpView,BikeSignInView,IndexView,SignOutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,9 @@ urlpatterns = [
     path("bikes/<int:pk>/chande/",BikeUpdateView.as_view(),name="Bike_update"),
     path("bikeregister/",BikeSignUpView.as_view(),name="register"),
     path("bikesignin/",BikeSignInView.as_view(),name="signin"),
+    path("index/",IndexView.as_view(),name="index"),
+    path("signout/",SignOutView.as_view(),name="signout"),
+
 
 
 

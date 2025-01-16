@@ -1,0 +1,29 @@
+
+
+{%extends 'logbase.html'%}
+
+{%load static%}
+
+{%block main_block%}
+
+
+<div class="container mt-4">
+    <div class="row mt-5">
+        <div class="col-3"></div>
+        <div class="col-6  mt-4 border border2 shadow p-3 rounded ">
+            <h1 class="text-center text-primary mt-3">Register</h1>
+
+    <form action="" method="post">
+        {%csrf_token%}
+        {{form}}
+        <button class="btn btn-outline-primary mt-5 mb-2" type="submit"><i class="bi bi-box-arrow-in-left"></i>Register</button>
+    </form>
+       <p class="">Already have an account Click to <a class="text-primary" href="{%url 'login'%}">signin</a></p>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+
+
+
+{%endblock%}

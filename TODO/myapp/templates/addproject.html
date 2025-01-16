@@ -1,0 +1,52 @@
+<style>
+    .mode {
+        margin: 0;
+        padding: 0;
+        background: url('/static/images/background2.jpg');
+        background-size: cover;
+        height: 100vh;
+        
+    }
+
+
+    .col-8 {
+        background: rgba(255, 255, 255, 0.4); /* Increased transparency */
+        backdrop-filter: blur(10px); /* Strong blur effect */
+        -webkit-backdrop-filter: blur(10px); /* For Safari */
+        border-radius: 10px; /* Adds rounded corners */
+    }
+
+    .shadow {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+</style>
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main_block %}
+<div class="mode">
+    <div class="container mt-5">
+        <div class="row mt-5">
+            <div class="col-2"></div>
+            <div class="col-8 mt-5 border shadow p-3 rounded">
+                <h1 class="text-center text-primary">Add Project List</h1>
+
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <div class="d-flex justify-content-between align-items-center mt-5">
+                        <button class="btn btn-outline-primary mb-2" type="submit">
+                            <i class="bi bi-box-arrow-in-left"></i> Add Project
+                        </button>
+                        <a href="{% url 'projectlist' %}" class="btn btn-outline-primary ">
+                            <i class="bi bi-view-list"></i> View Project
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

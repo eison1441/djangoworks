@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+padding: 0;
+background: url('static/images/bck.jpg') no-repeat center center fixed;
+background-size: cover;
+height: 100vh;
+animation: zoomIn 5s infinite alternate ease-in-out;
+}
+
+
+.col-10 {
+    background: rgba(255, 255, 255, 0.1); /* Increased transparency */
+    backdrop-filter: blur(10px); /* Strong blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+}
+
+.shadow {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+
+
+

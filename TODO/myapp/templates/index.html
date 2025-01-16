@@ -1,0 +1,146 @@
+<style>
+  .mode {
+    background-image: url('/static/images/background2.jpg'); /* Replace with the actual URL of your background image */
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    padding: 20px; /* Optional: Adds space inside the row */
+    color: white; /* Optional: Ensures text is visible if the image is dark */
+  }
+</style>
+
+{%extends 'base.html'%}
+
+{%load static%}
+
+{%block main_block%}
+
+<!-- <nav class="navbar navbar-expand-lg bg-body-tertiary border shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand text-primary" href="#">Project Manager</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-primary" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-primary" href="#">Link</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        
+        <a class="btn btn-outline-primary" ><i class="bi bi-box-arrow-in-left"></i> Log Out</a>
+      </div>
+    </div>
+  </div>
+</nav> -->
+
+
+
+
+
+  <div class="mode ">
+    <div class="container mt-5 container-back ">
+      <div class="row mt-5 ">
+  
+        <div class="col-4"></div>
+        <div class="col-4 ms-5 ">
+          <h1 class="mt-5 text-primary  mb-5">Welcome   {{request.user}} </h1>
+  
+          <a class="btn btn-outline-primary shadow  mb-3 mt-3 me-2" href="{%url 'addproject'%}"><i class="bi bi-plus-square"></i> Add Project</a>
+          <a href="{%url 'projectlist'%}" class="btn btn-outline-primary shadow  mb-3 mt-3 ms-2"><i class="bi bi-view-list"></i> View Projects</a>
+          
+        </div>
+        <div class="col-4"></div>
+        
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <table class="border border-2 shadow p-2 mt-3 mx-auto table table-striped table-hover">
+          <tr>
+            <th>Category</th>
+            <th>Count</th>
+            
+          </tr>
+          {%for summary in category_dict%}
+
+            <tr>
+              <td>{{summary.category}}</td>
+              <td>{{summary.count}}</td>
+            </tr>
+
+          {%endfor%}
+        </table>
+      </div>
+      <div class="col-4">
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="col-4">
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+
+  <script>
+    const ctx = document.getElementById('categoryChart');
+  
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: [{%for summary in category_dict%} "{{summary.category}}",  {%endfor%}],
+        datasets: [{
+          label: '# of Votes',
+          data: [{%for summary in category_dict%} {{summary.count}},  {%endfor%}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+
+    const ctx1 = document.getElementById('myChart');
+  
+    new Chart(ctx1, {
+      type: 'bar',
+      data: {
+        labels: [{%for summary in category_dict%} "{{summary.category}}",  {%endfor%}],
+        datasets: [{
+          label: '# of Votes',
+          data: [{%for summary in category_dict%} {{summary.count}},  {%endfor%}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+
+  
+
+
+
+{%endblock%}
