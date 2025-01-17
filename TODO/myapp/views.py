@@ -13,6 +13,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from django.db.models import Count
 
+from django.utils.decorators import method_decorator
+
+from myapp.decorators import signin_required
+
+from django.contrib import messages
+
 class SignUpView(View):
 
     def get(self,request,*args,**kwargs):
@@ -33,6 +39,7 @@ class SignUpView(View):
 
             print(">>>>>>>>acc created<<<<<<<<<<<")
 
+            messages.success(request,"login success")
             return redirect("login")
         
         else:
@@ -71,13 +78,15 @@ class SignInView(View):
 
                 print(">>>>>>>>>session started<<<<<<<<<<")
 
+                messages.success(request,"login success")
                 return redirect("index") 
             else:
 
                 print(">>>>>>faild<<<<<<<<<<")
 
+                messages.warning(request, "Invalid username or password.")
                 return render(request,"login.html",{"form":form_instance})  
-    
+@method_decorator(signin_required,name="dispatch")   
 class IndexView(View):
 
     def get(self,request,*args,**kwargs):
@@ -86,11 +95,6 @@ class IndexView(View):
 
         category_summary=Todo.objects.filter(owner=request.user).values("category").annotate(count=Count("category"))
         print(category_summary)
-        context ={
-            "category_dict":category_summary,
-
-            
-        }
         priority_summary=Todo.objects.filter(owner=request.user).values("priority").annotate(count=Count("priority"))
 
         print(priority_summary)
@@ -98,15 +102,23 @@ class IndexView(View):
         status_summary=Todo.objects.filter(owner=request.user).values("status").annotate(count=Count("status"))
 
         print(status_summary)
+        context ={
+            "category_dict":category_summary,
+            "priority_dict":priority_summary,
+            "status_dict":status_summary
+
+            
+        }
+        
 
         return render(request,"index.html",context) 
-    
+@method_decorator(signin_required,name="dispatch")   
 class ProjectAddView(View):
 
     def get(self,request,*args,**kwargs):
 
         form_instance=AddProjectForm()
-
+        
         return render(request,"addproject.html",{"form":form_instance})
     
 
@@ -120,22 +132,23 @@ class ProjectAddView(View):
             
             # data=form_instance.cleaned_data
             # Todo.objects.create(**data,owner=request.user)
-
-            return redirect("addproject")
+            messages.success(request,"Project added successfully")
+            return redirect("index")
         else:
+            messages.error(request,"Project not added")
             print(">>>>failed")
             return render(request,"addproject.html",{"form":form_instance})
         
-
+@method_decorator(signin_required,name="dispatch")
 class SignOutView(View):
 
     def get(self,request,*args,**kwargs):
 
         logout(request)
-
+        messages.success(request,"logout success")
         return redirect("login")
         
-
+@method_decorator(signin_required,name="dispatch")
 class ProjectListView(View):
 
     def get(self,request,*args,**kwargs):
@@ -143,7 +156,7 @@ class ProjectListView(View):
         qs=Todo.objects.all()
 
         return render(request,"project_list.html",{"data":qs})
-    
+@method_decorator(signin_required,name="dispatch")    
 class ProjectDeleteView(View):
 
     def get(self,request,*args,**kwargs):
@@ -151,10 +164,10 @@ class ProjectDeleteView(View):
         id=kwargs.get("pk")
 
         Todo.objects.get(id=id).delete()
-
-        return redirect("projectlist")
+        messages.success(request,"Project deleted successfully")
+        return redirect("index")
     
-
+@method_decorator(signin_required,name="dispatch")
 class ProjectUpdateView(View):
 
     def get(self,request,*args,**kwargs):
@@ -180,11 +193,11 @@ class ProjectUpdateView(View):
         if form_instance.is_valid():
 
             form_instance.save()
-
-            return redirect("addproject")
+            messages.success(request,"Project updated successfully")
+            return redirect("index")
         
         else:
-
+            messages.error(request,"Project not updated")
             return render(request,"project_edit.html",{"form":form_instance})
 
     

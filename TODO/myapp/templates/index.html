@@ -1,14 +1,15 @@
 <style>
   .mode {
-    background-image: url('/static/images/background2.jpg'); /* Replace with the actual URL of your background image */
-    background-size: cover; /* Ensures the image covers the entire area */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents the image from repeating */
-    border-radius: 10px; /* Optional: Adds rounded corners */
-    padding: 20px; /* Optional: Adds space inside the row */
-    color: white; /* Optional: Ensures text is visible if the image is dark */
+      background-image: url('/static/images/background2.jpg');
+      background-size: cover;
+      background-position: center;
+      
+      width: 100%; /* Set the desired width (adjust as needed) */
+      height: 50vh;
   }
 </style>
+
+
 
 {%extends 'base.html'%}
 
@@ -43,9 +44,15 @@
 
 
 
-  <div class="mode ">
-    <div class="container mt-5 container-back ">
-      <div class="row mt-5 ">
+  <div class="mode">
+    <div class="container  container-back ">
+      <div class="row  ">
+        {%for m in messages%}
+            <div class="alert alert-success alert-dismissible fade  w-50 show" role="alert">
+                <strong><i class="bi bi-check2-square text-success"></i> {{m}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {%endfor%}
   
         <div class="col-4"></div>
         <div class="col-4 ms-5 ">
@@ -82,62 +89,81 @@
         </table>
       </div>
       <div class="col-4">
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart2"></canvas>
       </div>
       <div class="col-4">
-        <canvas id="categoryChart"></canvas>
+        <canvas id="myChart"></canvas>
       </div>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
  
+<script>
+  const ctx = document.getElementById('myChart');
 
-  <script>
-    const ctx = document.getElementById('categoryChart');
-  
-    new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: [{%for summary in category_dict%} "{{summary.category}}",  {%endfor%}],
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [{% for item in priority_dict %}"{{ item.priority }}"{% if not forloop.last %}, {% endif %}{% endfor %}],
         datasets: [{
-          label: '# of Votes',
-          data: [{%for summary in category_dict%} {{summary.count}},  {%endfor%}],
-          borderWidth: 1
+            label: 'Count',
+            data: [{% for item in priority_dict %}{{ item.count }}{% if not forloop.last %}, {% endif %}{% endfor %}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.6)', // Red
+                'rgba(54, 162, 235, 0.6)', // Blue
+                'rgba(255, 206, 86, 0.6)', // Yellow
+                'rgba(75, 192, 192, 0.6)', // Green
+                'rgba(153, 102, 255, 0.6)', // Purple
+                'rgba(255, 159, 64, 0.6)'  // Orange
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
         }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top', // Adjust legend position
+            }
         }
-      }
-    });
+    }
+});
 
-
-    const ctx1 = document.getElementById('myChart');
+  const ctx1 = document.getElementById('myChart2');
   
-    new Chart(ctx1, {
+  new Chart(ctx1, {
       type: 'bar',
       data: {
-        labels: [{%for summary in category_dict%} "{{summary.category}}",  {%endfor%}],
-        datasets: [{
-          label: '# of Votes',
-          data: [{%for summary in category_dict%} {{summary.count}},  {%endfor%}],
-          borderWidth: 1
-        }]
+          labels: [{% for item in status_dict %}"{{ item.status }}",{% endfor %}],
+          datasets: [{
+              label: 'Count',
+              data: [{% for item in status_dict %} {{ item.count }},{% endfor %}],
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1,
+          }]
       },
       options: {
-        scales: {
-          y: {
-            beginAtZero: true
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
           }
-        }
       }
-    });
-  </script>
+  });
+  
+</script>
 
+  
 
   
 
