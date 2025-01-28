@@ -1,0 +1,23 @@
+{%extends 'logbase.html'%}
+
+{%block main_block%}
+
+<div class="container mt-5">
+    <div class="row mt-5">
+       <div class="col-4"></div>
+       <div class="col-4 mt-5 border rounded-5 border-2 p-3 shadow ">
+
+        <h1 class="text-center text-info">Profile Edit</h1>
+
+        <form action="" method="post">
+            {%csrf_token%}
+            {{form}}
+            <button class="btn btn-outline-info rounded-5 mt-4 mb-2" type="submit">Update</button>
+        </form>
+
+       </div>
+       <div class="col-4"></div>
+    </div>
+</div>
+
+{%endblock%}

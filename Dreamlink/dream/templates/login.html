@@ -1,0 +1,29 @@
+{%extends 'logbase.html'%}
+
+{%block main_block%}
+
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-4"></div>
+        <div class="col-4 mt-5">
+            {%for m in messages%}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{m}}</strong> You should check in on some of those fields below.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {%endfor%}
+            <div class="card border border-2 rounded-5 mt-5 p-3 shadow ">
+                <h1 class="text-center mt-3 mb-3 ">Signin</h1>
+
+                <form action="" method="post">
+                    {%csrf_token%}
+                    {{form}}
+                    <button class="btn btn-outline-primary rounded-5"><i class="bi bi-box-arrow-in-left"></i> Signin</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,37 @@
+
+
+{%extends 'logbase.html'%}
+
+{%block main_block%}
+
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-1"></div>
+        <div class="col-5 mt-5 border rounded-start border-2 p-3 shadow">
+            <h3 class="mt-4 mb-5">Dream Link</h3>
+
+            <div class="mt-5 mb-2">
+                <h1 class="mt-5">Welcome To...</h1>
+    
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quod doloribus dolores eaque deleniti consequuntur dolorum sapiente autem in molestiae, accusantium velit quasi animi nemo minus neque adipisci nisi laudantium nobis.</p>
+            </div>
+
+
+        </div>
+        
+        <div class="col-5 mt-5 border rounded-end border-2 p-3 shadow" >
+            <h1 class="text-info text-center mb-3"> Register</h1>
+
+            <form action="" method="post">
+            {%csrf_token%}
+            {{form}}
+            <button class="btn btn-outline-info mt-2 mb-2" type="submit"><i class="bi bi-box-arrow-in-left"></i> Register</button>
+            <p>already a user please login <a class="text-info mt-3" href="./login.html">login</a></p>
+            </form>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</div>
+
+
+{%endblock%}

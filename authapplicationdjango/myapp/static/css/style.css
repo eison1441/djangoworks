@@ -1,0 +1,21 @@
+body{
+    background-image: url();
+    background-size: cover;
+    height: 100vh;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(50px); 
+    -webkit-backdrop-filter: blur(50px);
+}
+.col-6 {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(50px); 
+    -webkit-backdrop-filter: blur(50px);
+}
+.col-4 {
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(50px); 
+    -webkit-backdrop-filter: blur(50px);
+}

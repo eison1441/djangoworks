@@ -1,0 +1,23 @@
+{%extends 'logbase.html'%}
+
+{%block main_block%}
+
+<div class="container mt-5">
+    <div class="row mt-5">
+        <div class="col-4"></div>
+        <div class="col-4 mt-5">
+            <div class="card border border-2 shadow p-3">
+                <h1 class="text-center">Verify otp</h1>
+
+                <form action="" method="post">
+                    {%csrf_token%}
+                    <input class="form-control mt-3 mb-3" type="text" name="otp" placeholder="Enter otp here">
+                    <button class="btn btn-outline-primary mt-3 mb-3" type="submit"><i class="bi bi-patch-check-fill"></i> Verify</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
+
+{%endblock%}

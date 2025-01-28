@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block main_block%}
+
+
+
+<div class="container mt-5">
+    <div class="row mt-5">
+       <div class="col-3"></div>
+       <div class="col-6 mt-5 border rounded-5 border-2 p-3 shadow ">
+        
+        <h1 class="text-center text-info">Profile Edit</h1>
+        <img src="{{form.instance.picture.url}} " class="w-25 rounded-circle align " alt="">
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            {{form}}
+            <button class="btn btn-outline-info rounded-5 mt-4 mb-2" type="submit">Update</button>
+        </form>
+
+       </div>
+       <div class="col-3">
+        
+       </div>
+    </div>
+</div>
+
+{%endblock%}
