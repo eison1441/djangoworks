@@ -1,12 +1,5 @@
-
-
-
-
-
 from django.contrib.auth.forms import UserCreationForm
-
 from instructor.models import User
-
 from django import forms
 
 

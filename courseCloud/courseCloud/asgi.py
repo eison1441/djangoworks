@@ -1,5 +1,5 @@
 """
-ASGI config for courseCloud project.
+ASGI config for CourseCloud project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'courseCloud.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'CourseCloud.settings')
 
 application = get_asgi_application()
